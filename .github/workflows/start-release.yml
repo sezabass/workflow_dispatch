@@ -1,0 +1,22 @@
+name: Start Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: 'Type [0:major, 1:minor, 2:patch]'
+        required: true
+        default: '1'
+jobs:
+  start-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Install Fastlane
+        run: bundle install
+      - name: Fastlane start release candidate
+        run: bundle exec fastlane start_release_candidate update_type:${{ github.event.inputs.update_type }}
