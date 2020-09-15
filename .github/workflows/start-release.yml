@@ -11,7 +11,10 @@ jobs:
   start-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout branch 'test_branch'
+        uses: actions/checkout@v2
+        with:
+          ref: 'test_branch'
       - name: Set up Ruby 2.7
         uses: actions/setup-ruby@v1
         with:

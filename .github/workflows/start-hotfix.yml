@@ -6,6 +6,12 @@ jobs:
   start-hotfix:
     runs-on: ubuntu-latest
     steps:
+
+      - if: github.ref != 'refs/heads/master'
+        name: Invalid branch
+        run: |
+          echo "Branch must be 'master' for 'hotfix' workflow"
+          exit 1
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
         uses: actions/setup-ruby@v1
