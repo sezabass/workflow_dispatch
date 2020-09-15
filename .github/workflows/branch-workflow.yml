@@ -1,0 +1,17 @@
+name: Branch Workflow
+
+on:
+  workflow_dispatch:
+jobs:
+  branch-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Install Fastlane
+        run: bundle install
+      - name: Fastlane start hotfix
+        run: echo "Test workflow branch :)"
