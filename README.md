@@ -1,2 +1,5 @@
-# dispatch_workflow
-A repository to test Github Actions's dispatch workflow
+# workflow_dispatch
+A repository to test Github Actions's `workflow_dispatch`.
+
+`start-hotfix` doesn't use any inputs.  
+`start-release` uses one required input.
