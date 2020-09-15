@@ -1,0 +1,17 @@
+name: Start Hotfix
+
+on:
+  workflow_dispatch:
+jobs:
+  start-hotfix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Install Fastlane
+        run: bundle install
+      - name: Fastlane start hotfix
+        run: bundle exec fastlane start_hotfix
